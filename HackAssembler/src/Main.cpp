@@ -28,7 +28,7 @@ int main()
     //std::cout << parser.getAddressValue() << std::endl;
     //std::cin.get();
 
-	std::string test = "D=D+M";
+	/*std::string test = "D=D+M";
 	std::string output;
-	assembler.deAssemble(test,output);
+	assembler.deAssemble(test,output);*/
 }

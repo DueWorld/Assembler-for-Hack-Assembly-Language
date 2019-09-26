@@ -3,3 +3,14 @@
 ################################################################################
 
 /.vs/HackAssembler/v15
+/.vs/config
+/bin/Intermediates/x64/Release
+/bin/Intermediates/x64/Debug/HackAssembler.tlog
+/bin/Intermediates/Win32/Release/HackAssembler.tlog
+/bin/Intermediates/Win32/Release
+/.vs/config
+/bin/x64/Debug
+/bin/x64/Debug/HackAssembler.pdb
+/bin/x64/Debug/HackAssembler.pdb
+/bin/x64/Debug/HackAssembler.ilk
+/bin/x64/Debug/HackAssembler.exe

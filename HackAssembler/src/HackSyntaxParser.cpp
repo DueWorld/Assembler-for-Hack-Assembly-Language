@@ -4,8 +4,6 @@
 
 typedef HackAssembler_Utilities::StringUtilities stringUtil;
 
-
-
 HackAssembler::SyntaxParser::SyntaxParser()
 {
 	this->syntaxError = false;

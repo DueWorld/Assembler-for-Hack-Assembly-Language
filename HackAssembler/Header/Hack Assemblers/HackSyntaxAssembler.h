@@ -5,12 +5,11 @@
 #include "HackSymbolMapper.h"
 #include "HackSyntaxParser.h"
 
-typedef std::shared_ptr<HackAssembler::ISymbolMapper> ptr_Mapper;
-typedef std::shared_ptr<HackAssembler::ISyntaxParser> ptr_Parser;
-
-
 namespace HackAssembler
 {
+	typedef std::shared_ptr<HackAssembler::ISymbolMapper> ptr_Mapper;
+	typedef std::shared_ptr<HackAssembler::ISyntaxParser> ptr_Parser;
+
 	class HackSyntaxAssembler
 	{
 	private:
@@ -19,12 +18,12 @@ namespace HackAssembler
 		HackAssembler::BinaryConverter16 binaryConverter;
 
 	public:
-		HackSyntaxAssembler(ptr_Mapper mapperPtr, ptr_Parser parserPtr):
+		HackSyntaxAssembler(HackAssembler::ptr_Mapper mapperPtr, HackAssembler::ptr_Parser parserPtr) :
 			mapper(mapperPtr), parser(parserPtr)
 		{}
 		HackSyntaxAssembler()
 		{
-				
+
 		}
 
 	public:
@@ -37,7 +36,7 @@ namespace HackAssembler
 		bool deAssemble(const std::string& stringAssembled, std::string& stringOutput);
 
 	private:
-
+		bool tryGetUncommentedLine(const std::string& s,std::string& outputString);
 
 	};
 

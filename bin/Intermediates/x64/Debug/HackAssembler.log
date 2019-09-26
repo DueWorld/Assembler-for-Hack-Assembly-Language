@@ -1,1 +1,5 @@
-﻿
+﻿  Main.cpp
+c:\users\world\documents\visual studio 2017\projects\hackassembler\hackassembler\src\main.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\world\documents\visual studio 2017\projects\hackassembler\hackassembler\src\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  HackAssembler.vcxproj -> C:\Users\world\documents\visual studio 2017\Projects\HackAssembler\bin\x64\Debug\HackAssembler.exe
+  HackAssembler.vcxproj -> C:\Users\world\documents\visual studio 2017\Projects\HackAssembler\bin\x64\Debug\HackAssembler.pdb (Partial PDB)

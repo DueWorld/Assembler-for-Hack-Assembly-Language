@@ -2,7 +2,7 @@
 #include<sstream>
 #include<vector>
 #include"StringUtilities.h"
-
+#include <algorithm>
 
 std::vector<std::string> & HackAssembler_Utilities::StringUtilities::split(const std::string &s, char delim, std::vector<std::string> &elems)
 {
@@ -21,14 +21,14 @@ bool HackAssembler_Utilities::StringUtilities::contains(const std::string & s, c
 
 bool HackAssembler_Utilities::StringUtilities::try_Parse_int(const std::string & s, int & output)
 {
-		std::stringstream ss(s);
-		int outBeforeProcess = output;
-		if ((ss >> output).fail() || !(ss >> std::ws).eof())
-		{
-			output = outBeforeProcess;
-			return false;
-		}
-		return true;
+	std::stringstream ss(s);
+	int outBeforeProcess = output;
+	if ((ss >> output).fail() || !(ss >> std::ws).eof())
+	{
+		output = outBeforeProcess;
+		return false;
+	}
+	return true;
 }
 
 bool HackAssembler_Utilities::StringUtilities::try_Parse_double(const std::string & s, double & output)
@@ -41,4 +41,9 @@ bool HackAssembler_Utilities::StringUtilities::try_Parse_double(const std::strin
 		return false;
 	}
 	return true;
+}
+
+bool HackAssembler_Utilities::StringUtilities::is_WhiteSpace(const std::string& s)
+{
+	return std::all_of(s.begin(), s.end(), isspace);
 }

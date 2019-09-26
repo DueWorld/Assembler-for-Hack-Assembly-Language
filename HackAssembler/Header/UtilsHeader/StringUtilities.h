@@ -10,6 +10,7 @@ namespace HackAssembler_Utilities
 		static bool contains(const std::string & s, char contained);
 		static bool try_Parse_int(const std::string & s, int& output);
 		static bool HackAssembler_Utilities::StringUtilities::try_Parse_double(const std::string & s, double & output);
+		static bool HackAssembler_Utilities::StringUtilities::is_WhiteSpace(const std::string& s);
 	private:
 		StringUtilities() {}
 	};

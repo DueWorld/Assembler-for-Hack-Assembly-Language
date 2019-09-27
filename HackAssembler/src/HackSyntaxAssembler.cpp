@@ -1,6 +1,5 @@
 #include "HackSyntaxAssembler.h"
 #include"StringUtilities.h"
-#include<vector>
 #include<algorithm>
 
 void HackAssembler::HackSyntaxAssembler::set_Mapper(const ptr_Mapper& mapperPtr)
@@ -26,9 +25,9 @@ const HackAssembler::ptr_Parser & HackAssembler::HackSyntaxAssembler::get_Parser
 bool HackAssembler::HackSyntaxAssembler::deAssemble(const std::string & stringAssembled, std::string & stringOutput)
 {
 	std::string comp;
-	if (!tryGetUncommentedLine(stringAssembled, comp))
+	bool flag = tryGetUncommentedLine(stringAssembled, comp);
+	if (!flag)
 		return false;
-
 	else {
 
 		this->parser->parse(comp);
@@ -57,9 +56,8 @@ bool HackAssembler::HackSyntaxAssembler::deAssemble(const std::string & stringAs
 				stringOutput.append(comp);
 			else
 				return false;
-
-			return true;
 		}
+		return true;
 	}
 }
 
@@ -73,6 +71,7 @@ bool HackAssembler::HackSyntaxAssembler::tryGetUncommentedLine(const std::string
 		HackAssembler_Utilities::StringUtilities::split(s, '//', d);
 		outputString = d.front();
 		outputString.erase(std::remove(outputString.begin(), outputString.end(), ' '), outputString.end());
+		return true;
 	}
 	else
 		return false;

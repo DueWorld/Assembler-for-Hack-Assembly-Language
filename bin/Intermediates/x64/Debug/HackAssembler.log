@@ -1,5 +1,12 @@
-﻿  Main.cpp
-c:\users\world\documents\visual studio 2017\projects\hackassembler\hackassembler\src\main.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\world\documents\visual studio 2017\projects\hackassembler\hackassembler\src\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  HackAssembler.vcxproj -> C:\Users\world\documents\visual studio 2017\Projects\HackAssembler\bin\x64\Debug\HackAssembler.exe
-  HackAssembler.vcxproj -> C:\Users\world\documents\visual studio 2017\Projects\HackAssembler\bin\x64\Debug\HackAssembler.pdb (Partial PDB)
+﻿  HackSyntaxParser.h
+  StringUtilities.cpp
+  Main.cpp
+  HackSyntaxParser.cpp
+  HackSyntaxAssembler.cpp
+e:\tech\educational repos\hackassembler\hackassembler\src\hacksyntaxassembler.cpp(71): warning C4305: 'argument': truncation from 'int' to 'char'
+e:\tech\educational repos\hackassembler\hackassembler\src\hacksyntaxassembler.cpp(71): warning C4309: 'argument': truncation of constant value
+  HackSymbolMapper.cpp
+  BinaryConverter16.cpp
+  Generating Code...
+  HackAssembler.vcxproj -> E:\Tech\Educational Repos\HackAssembler\bin\x64\Debug\HackAssembler.exe
+  HackAssembler.vcxproj -> E:\Tech\Educational Repos\HackAssembler\bin\x64\Debug\HackAssembler.pdb (Partial PDB)

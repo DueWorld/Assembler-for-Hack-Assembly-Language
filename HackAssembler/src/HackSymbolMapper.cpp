@@ -1,4 +1,4 @@
-#include "..\Header\Hack Assemblers\HackSymbolMapper.h"
+#include "HackSymbolMapper.h"
 
 const std::unordered_map<std::string, std::string>& HackAssembler::HackSymbolMapper::get_DestinationMap() const
 {

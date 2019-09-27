@@ -3,13 +3,11 @@
 #include<memory>
 #include<vector>
 #include <sstream>
-#include<iostream>
+#include <iostream>
 #include <fstream>
 #include "HackSyntaxParser.h"
-#include "HackSymbolMapper.h";
-#include"StringUtilities.h";
+#include "HackSymbolMapper.h"
 #include "HackSyntaxAssembler.h"
-#include "ISyntaxParser.h"
 
 int main()
 {
@@ -18,16 +16,16 @@ int main()
 	HackAssembler::HackSyntaxAssembler assembler = HackAssembler::HackSyntaxAssembler(std::make_shared<HackAssembler::HackSymbolMapper>(mapper), std::make_shared<HackAssembler::SyntaxParser>(parser));
 
 	std::ifstream fStream;
-	fStream.open("Enter your text here");
+	fStream.open("E:\\Tech\\Important Coding Courses\\CS\\nand2tetris\\nand2tetris\\projects\\06\\pong\\PongL.asm");
 
 	std::ofstream myfile;
-	myfile.open("Enter your text here");
+	myfile.open("E:\\Tech\\Important Coding Courses\\CS\\nand2tetris\\nand2tetris\\projects\\06\\pong\\PongComppL.hack");
 
 	std::string out;
 	for (std::string line; std::getline(fStream, line); )
 	{
 		if (assembler.deAssemble(line, out))
-			myfile<<out.c_str()<<std::endl;		
+			myfile << out.c_str() << std::endl;
 	}
 
 	myfile.close();

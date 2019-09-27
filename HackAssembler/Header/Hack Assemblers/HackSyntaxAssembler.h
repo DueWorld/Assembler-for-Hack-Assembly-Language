@@ -4,6 +4,7 @@
 #include<sstream>
 #include "HackSymbolMapper.h"
 #include "HackSyntaxParser.h"
+#include "BinaryConverter16.h"
 
 namespace HackAssembler
 {

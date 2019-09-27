@@ -1,9 +1,6 @@
 #pragma once
 #include"ISyntaxParser.h"
 #include "ISymbolMapper.h"
-#include"BinaryConverter16.h"
-#include<memory>
-
 
 namespace HackAssembler
 {

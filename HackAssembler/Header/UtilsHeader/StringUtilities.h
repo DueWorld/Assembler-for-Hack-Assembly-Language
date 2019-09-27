@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 #include<string>
+
 namespace HackAssembler_Utilities
 {
 	class StringUtilities
@@ -11,7 +12,10 @@ namespace HackAssembler_Utilities
 		static bool try_Parse_int(const std::string & s, int& output);
 		static bool try_Parse_double(const std::string & s, double & output);
 		static bool is_WhiteSpace(const std::string& s);
+		static bool parsable_toInt(const std::string & s);
+
 	private:
 		StringUtilities() {}
 	};
+
 }

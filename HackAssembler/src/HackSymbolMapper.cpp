@@ -1,9 +1,18 @@
 #include "HackSymbolMapper.h"
+#include "StringHackUtilities.h"
+#include "StringUtilities.h"
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+typedef HackAssembler_Utilities::StringUtilities stringUtil;
+typedef HackAssembler_Utilities::StringHackUtilities stringHackUtil;
 
 const std::unordered_map<std::string, std::string>& HackAssembler::HackSymbolMapper::get_DestinationMap() const
 {
 	return this->destinationMap;
- }
+}
 
 const std::unordered_map<std::string, std::string>& HackAssembler::HackSymbolMapper::get_computationMap() const
 {
@@ -32,22 +41,22 @@ void HackAssembler::HackSymbolMapper::initComputationMap()
 {
 	this->computationMap.emplace("0", "0101010");
 	this->computationMap.emplace("1", "0111111");
-	this->computationMap.emplace("-1","0111010");
+	this->computationMap.emplace("-1", "0111010");
 	this->computationMap.emplace("D", "0001100");
 	this->computationMap.emplace("A", "0110000");
-	this->computationMap.emplace("!D","0001101");
-	this->computationMap.emplace("!A","0110001");
-	this->computationMap.emplace("-D","0001111");
-	this->computationMap.emplace("-A","0110011");
-	this->computationMap.emplace("D+1","0011111");
-	this->computationMap.emplace("A+1","0110111");
-	this->computationMap.emplace("D-1","0001110");
-	this->computationMap.emplace("A-1","0110010");
-	this->computationMap.emplace("D+A","0000010");
-	this->computationMap.emplace("D-A","0010011");
-	this->computationMap.emplace("A-D","0000111");
-	this->computationMap.emplace("D&A","0000000");
-	this->computationMap.emplace("D|A","0010101");
+	this->computationMap.emplace("!D", "0001101");
+	this->computationMap.emplace("!A", "0110001");
+	this->computationMap.emplace("-D", "0001111");
+	this->computationMap.emplace("-A", "0110011");
+	this->computationMap.emplace("D+1", "0011111");
+	this->computationMap.emplace("A+1", "0110111");
+	this->computationMap.emplace("D-1", "0001110");
+	this->computationMap.emplace("A-1", "0110010");
+	this->computationMap.emplace("D+A", "0000010");
+	this->computationMap.emplace("D-A", "0010011");
+	this->computationMap.emplace("A-D", "0000111");
+	this->computationMap.emplace("D&A", "0000000");
+	this->computationMap.emplace("D|A", "0010101");
 	this->computationMap.emplace("M", "1110000");
 	this->computationMap.emplace("!M", "1110001");
 	this->computationMap.emplace("-M", "1110011");
@@ -71,6 +80,20 @@ void HackAssembler::HackSymbolMapper::initjumpMap()
 	this->jumpMap.emplace("JNE", "101");
 	this->jumpMap.emplace("JLE", "110");
 	this->jumpMap.emplace("JMP", "111");
+}
+
+void HackAssembler::HackSymbolMapper::initSymbolTable()
+{
+	for (int i = 0; i < 16; i++)
+		this->symbolTable.emplace("R" + std::to_string(i), i);
+
+	this->symbolTable.emplace("SCREEN", 16384);
+	this->symbolTable.emplace("KBD", 24576);
+	this->symbolTable.emplace("SP", 0);
+	this->symbolTable.emplace("LCL", 1);
+	this->symbolTable.emplace("ARG", 2);
+	this->symbolTable.emplace("THIS", 3);
+	this->symbolTable.emplace("THAT", 4);
 }
 
 bool HackAssembler::HackSymbolMapper::map_DestinationInstruction(const std::string & stringMapped, std::string& outPutString)
@@ -104,5 +127,39 @@ bool HackAssembler::HackSymbolMapper::map_JumpInstruction(const std::string & st
 		outPutString = this->jumpMap[stringMapped];
 		return true;
 	}
+}
+
+void HackAssembler::HackSymbolMapper::map_Symbol(const std::string & stringToBeMapped, std::string & outPutString)
+{
+	if (stringUtil::parsable_toInt(stringToBeMapped))
+		outPutString = stringToBeMapped;
+	else
+	{
+		if (symbolTable.find(stringToBeMapped)== symbolTable.end())
+		{
+			symbolTable.emplace(stringToBeMapped, counter);
+			outPutString = std::to_string(counter++);
+		}
+		outPutString = std::to_string(symbolTable[stringToBeMapped]);
+	}
+}
+
+void HackAssembler::HackSymbolMapper::init_SymbolTable(std::ifstream & stream, const std::string& filePath)
+{
+	stream.open(filePath);
+	int fileLineCounter = 0;
+	std::string out;
+	std::string symbolOut;
+	for (std::string line; std::getline(stream, line); )
+	{
+		if (stringHackUtil::tryGetUncommentedLine(line, out))
+		{
+			if (stringHackUtil::tryGetJumbSymbol(out, symbolOut))
+				symbolTable.emplace(symbolOut, fileLineCounter);
+			else
+				fileLineCounter++;
+		}
+	}
+	stream.close();
 }
 

@@ -15,17 +15,17 @@ void HackAssembler::SyntaxParser::parse(const std::string & toBeParsedString)
 	this->deduceAorCInstruction(toBeParsedString);
 	if (aInstruction)
 	{
-		int integer = 0;
+		//int integer = 0;
 		std::string addressValCandidate = toBeParsedString.substr(1);
-		if (stringUtil::try_Parse_int(addressValCandidate, integer))
-		{
+		/*if (stringUtil::try_Parse_int(addressValCandidate, integer))
+		{*/
 			this->addressValue = addressValCandidate;
 			this->destination = "NA";
 			this->computation = "NA";
 			this->gotoInstruction = "NA";
-		}
+	/*	}
 		else
-			this->syntaxError = true;
+			this->syntaxError = true;*/
 	}
 	else
 	{

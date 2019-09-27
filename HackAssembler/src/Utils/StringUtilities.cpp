@@ -31,6 +31,17 @@ bool HackAssembler_Utilities::StringUtilities::try_Parse_int(const std::string &
 	return true;
 }
 
+bool HackAssembler_Utilities::StringUtilities::parsable_toInt(const std::string & s)
+{
+	std::stringstream ss(s);
+	int outBeforeProcess;
+	if ((ss >> outBeforeProcess).fail() || !(ss >> std::ws).eof())
+	{
+		return false;
+	}
+	return true;
+}
+
 bool HackAssembler_Utilities::StringUtilities::try_Parse_double(const std::string & s, double & output)
 {
 	std::stringstream ss(s);

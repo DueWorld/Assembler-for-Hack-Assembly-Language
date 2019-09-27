@@ -9,17 +9,21 @@
 #include "HackSymbolMapper.h"
 #include "HackSyntaxAssembler.h"
 
+
+
 int main()
 {
-	HackAssembler::SyntaxParser parser;
-	HackAssembler::HackSymbolMapper mapper;
-	HackAssembler::HackSyntaxAssembler assembler = HackAssembler::HackSyntaxAssembler(std::make_shared<HackAssembler::HackSymbolMapper>(mapper), std::make_shared<HackAssembler::SyntaxParser>(parser));
-
+	std::shared_ptr<HackAssembler::HackSymbolMapper> mapperPtr = std::make_shared<HackAssembler::HackSymbolMapper>();
+	HackAssembler::HackSyntaxAssembler assembler = HackAssembler::HackSyntaxAssembler(mapperPtr, std::make_shared<HackAssembler::SyntaxParser>());
+	char* readPath = "YOUR PATH FROM ARG";
+	char* writePath = "YOUR PATH FROM ARG";
 	std::ifstream fStream;
-	fStream.open("E:\\Tech\\Important Coding Courses\\CS\\nand2tetris\\nand2tetris\\projects\\06\\pong\\PongL.asm");
+
+	mapperPtr->init_SymbolTable(fStream, readPath);
+	fStream.open(readPath);
 
 	std::ofstream myfile;
-	myfile.open("E:\\Tech\\Important Coding Courses\\CS\\nand2tetris\\nand2tetris\\projects\\06\\pong\\PongComppL.hack");
+	myfile.open(writePath);
 
 	std::string out;
 	for (std::string line; std::getline(fStream, line); )
@@ -27,7 +31,7 @@ int main()
 		if (assembler.deAssemble(line, out))
 			myfile << out.c_str() << std::endl;
 	}
-
+	
 	myfile.close();
 	fStream.close();
 }

@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)HackAssembler\Header\UtilsHeader;$(SolutionDir)HackAssembler\Header\Hack Assemblers;$(SolutionDir)HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -104,7 +104,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)HackAssembler\Header\UtilsHeader;$(SolutionDir)HackAssembler\Header\Hack Assemblers;$(SolutionDir)HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)HackAssembler\Header\UtilsHeader;$(SolutionDir)HackAssembler\Header\Hack Assemblers;$(SolutionDir)HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -134,7 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)HackAssembler\Header\UtilsHeader;$(SolutionDir)HackAssembler\Header\Hack Assemblers;$(SolutionDir)HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -144,21 +144,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Header\Hack Assemblers\HackSyntaxParser.h" />
     <ClCompile Include="src\BinaryConverter16.cpp" />
     <ClCompile Include="src\HackSymbolMapper.cpp" />
     <ClCompile Include="src\HackSyntaxAssembler.cpp" />
     <ClCompile Include="src\HackSyntaxParser.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\StringUtilities.cpp" />
+    <ClCompile Include="src\Utils\StringHackUtilities.cpp" />
+    <ClCompile Include="src\Utils\StringUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Hack Assemblers\BinaryConverter16.h" />
     <ClInclude Include="Header\Hack Assemblers\HackSymbolMapper.h" />
     <ClInclude Include="Header\Hack Assemblers\HackSyntaxAssembler.h" />
+    <ClInclude Include="Header\Hack Assemblers\HackSyntaxParser.h" />
     <ClInclude Include="Header\Interfaces\ISymbolMapper.h" />
     <ClInclude Include="Header\Interfaces\ISyntaxParser.h" />
     <ClInclude Include="Header\Interfaces\ISyntaxAssembler.h" />
+    <ClInclude Include="Header\UtilsHeader\StringHackUtilities.h" />
     <ClInclude Include="Header\UtilsHeader\StringUtilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

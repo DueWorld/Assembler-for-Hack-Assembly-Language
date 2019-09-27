@@ -1,6 +1,8 @@
 #include "HackSyntaxAssembler.h"
 #include"StringUtilities.h"
+#include<StringHackUtilities.h>
 #include<algorithm>
+
 
 void HackAssembler::HackSyntaxAssembler::set_Mapper(const ptr_Mapper& mapperPtr)
 {
@@ -25,55 +27,42 @@ const HackAssembler::ptr_Parser & HackAssembler::HackSyntaxAssembler::get_Parser
 bool HackAssembler::HackSyntaxAssembler::deAssemble(const std::string & stringAssembled, std::string & stringOutput)
 {
 	std::string comp;
-	bool flag = tryGetUncommentedLine(stringAssembled, comp);
-	if (!flag)
+	bool validInstruction = HackAssembler_Utilities::StringHackUtilities::tryGetUncommentedLine(stringAssembled, comp);
+	bool symbolJump = HackAssembler_Utilities::StringHackUtilities::isJumpSymbol(comp);
+
+	if (!validInstruction || symbolJump)
 		return false;
-	else {
 
-		this->parser->parse(comp);
+	this->parser->parse(comp);
 
-		if (parser->isSyntaxError())
-			return false;
+	if (parser->isSyntaxError())
+		return false;
 
-		else if (parser->isAInstruction())
-		{
-			stringOutput = this->binaryConverter.ConvertTo16BitBinary(parser->getAddressValue());
-		}
-
-		else
-		{
-			stringOutput = "111";
-
-			if (this->mapper->map_ComputationInstruction(this->parser->getComputation(), comp))
-				stringOutput.append(comp);
-			else
-				return false;
-			if (this->mapper->map_DestinationInstruction(this->parser->getDestination(), comp))
-				stringOutput.append(comp);
-			else
-				return false;
-			if (this->mapper->map_JumpInstruction(this->parser->getGotoInstruction(), comp))
-				stringOutput.append(comp);
-			else
-				return false;
-		}
-		return true;
-	}
-}
-
-bool HackAssembler::HackSyntaxAssembler::tryGetUncommentedLine(const std::string & s, std::string & outputString)
-{
-	bool isWhite = HackAssembler_Utilities::StringUtilities::is_WhiteSpace(s);
-	bool isComment = s.rfind("//", 0) == 0;
-	if (!isWhite && !isComment)
+	if (parser->isAInstruction())
 	{
-		std::vector<std::string> d;
-		HackAssembler_Utilities::StringUtilities::split(s, '//', d);
-		outputString = d.front();
-		outputString.erase(std::remove(outputString.begin(), outputString.end(), ' '), outputString.end());
+		mapper->map_Symbol(parser->getAddressValue(), stringOutput);
+		stringOutput = this->binaryConverter.ConvertTo16BitBinary(stringOutput);
 		return true;
 	}
-	else
+
+	stringOutput = "111";
+
+	if (!mapper->map_ComputationInstruction(parser->getComputation(), comp))
 		return false;
+
+	stringOutput.append(comp);
+
+	if (!mapper->map_DestinationInstruction(parser->getDestination(), comp))
+		return false;
+
+	stringOutput.append(comp);
+
+	if (!mapper->map_JumpInstruction(parser->getGotoInstruction(), comp))
+		return false;
+
+	stringOutput.append(comp);
+
+	return true;
 }
+
 

@@ -1,7 +1,7 @@
 #pragma once
-#include<memory>
-#include<string>
-#include<sstream>
+#include <memory>
+#include <string>
+#include <sstream>
 #include "HackSymbolMapper.h"
 #include "HackSyntaxParser.h"
 #include "BinaryConverter16.h"
@@ -23,9 +23,7 @@ namespace HackAssembler
 			mapper(mapperPtr), parser(parserPtr)
 		{}
 		HackSyntaxAssembler()
-		{
-
-		}
+		{}
 
 	public:
 		void set_Mapper(const ptr_Mapper& mapperPtr);
@@ -35,10 +33,6 @@ namespace HackAssembler
 		const ptr_Parser & get_Parser() const;
 	public:
 		bool deAssemble(const std::string& stringAssembled, std::string& stringOutput);
-
-	private:
-		bool tryGetUncommentedLine(const std::string& s,std::string& outputString);
-
 	};
 
 

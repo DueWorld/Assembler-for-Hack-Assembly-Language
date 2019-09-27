@@ -1,7 +1,7 @@
-#include<iostream>
+#include <iostream>
 #include <string>
-#include<memory>
-#include<vector>
+#include <memory>
+#include <vector>
 #include <sstream>
 #include <iostream>
 #include <fstream>

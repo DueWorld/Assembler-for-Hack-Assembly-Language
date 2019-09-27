@@ -14,3 +14,8 @@
 /bin/x64/Debug/HackAssembler.pdb
 /bin/x64/Debug/HackAssembler.ilk
 /bin/x64/Debug/HackAssembler.exe
+/bin/Intermediates/x64/Debug/Header/Hack Assemblers
+/bin/Intermediates/x64/Debug/src
+/bin/x64/Release
+/bin/Intermediates/x64/Debug/src
+*.obj

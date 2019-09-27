@@ -94,7 +94,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\world\Documents\Visual Studio 2017\Projects\HackAssembler\HackAssembler\Header\UtilsHeader;C:\Users\world\Documents\Visual Studio 2017\Projects\HackAssembler\HackAssembler\Header\Hack Assemblers;C:\Users\world\Documents\Visual Studio 2017\Projects\HackAssembler\HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HackAssembler\Header\UtilsHeader;$(SolutionDir)HackAssembler\Header\Hack Assemblers;$(SolutionDir)HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -103,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\world\Documents\Visual Studio 2017\Projects\HackAssembler\HackAssembler\Header\UtilsHeader;C:\Users\world\Documents\Visual Studio 2017\Projects\HackAssembler\HackAssembler\Header\Hack Assemblers;C:\Users\world\Documents\Visual Studio 2017\Projects\HackAssembler\HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HackAssembler\Header\UtilsHeader;$(SolutionDir)HackAssembler\Header\Hack Assemblers;$(SolutionDir)HackAssembler\Header\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
